@@ -46,8 +46,6 @@ def Remote_code_execution_via_web_shell_upload(s, url):
             print(Fore.GREEN + f'[+] Answer is {answer}')
             r = s.post(url + '/submitSolution',data={'answer':answer}, verify=False, proxies=proxies)
             print(Fore.GREEN + '[+] Congratulations, you solved the lab!')
-            with open("output.txt", "w") as file:
-                file.write("Success")
             return True
         else:
             print(Fore.RED +'[-] Unable to get the answer')
