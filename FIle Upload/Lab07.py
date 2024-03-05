@@ -42,8 +42,6 @@ def request_avatar(url, s, proxies):
             print(Fore.GREEN + f'[+] Answer is {r.text}')
             r = s.post(url + '/submitSolution', data={'answer':r.text}, verify=False, proxies=proxies)
             print(Fore.GREEN + '[+] Congratulations, you solved the lab!')
-            with open("output.txt", "w") as file:
-                file.write("Success")
             return True
         elif r.status_code == 403:
             print(Fore.RED + '[-] Forbidden: Shell is still being scanned')
